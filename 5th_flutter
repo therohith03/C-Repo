@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyResponsiveApp());
+}
+
+class MyResponsiveApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Responsive UI',
+      home: ResponsiveHomePage(),
+    );
+  }
+}
+
+class ResponsiveHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Responsive UI Example'),
+      ),
+
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+
+          // Small screen
+          if (constraints.maxWidth < 600) {
+            return Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.blue,
+                    child: Center(
+                      child: Text(
+                        'Box 1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.green,
+                    child: Center(
+                      child: Text(
+                        'Box 2',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+
+          // Large screen
+          else {
+            return Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.blue,
+                    child: Center(
+                      child: Text(
+                        'Box 1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.green,
+                    child: Center(
+                      child: Text(
+                        'Box 2',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      ),
+    );
+  }
+}
